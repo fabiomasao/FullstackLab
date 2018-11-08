@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const categorias = require('.routes/categorias')
+const categorias = require('./routes/categorias')
 
 
 app.set('view engine', 'ejs')
