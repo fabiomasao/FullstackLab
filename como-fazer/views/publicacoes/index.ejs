@@ -1,0 +1,30 @@
+<%- include('../header') %>
+
+<a class="btn btn-light" href="/publicacoes/nova">Nova Publicacao</a><br>
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Publicação</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% publicacoes.forEach(publicacao =>{ %>
+      <tr>
+        <td><%= publicacao.titulo %></th>
+        <td>
+            <a href="/categorias/editar/<%= publicacao.id %>">Editar</a>
+            <a href="/categorias/excluir/<%= publicacao.id %>">Excluir</a><br>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+
+    
+    
+
+
+<%- include('../footer') %>
