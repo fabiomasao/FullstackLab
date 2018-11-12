@@ -6,12 +6,12 @@ router.get('/nova', controller.novaForm)
 
 router.post('/nova', controller.nova)
        
-router.get('/', controller.list)
+router.get('/categoria/:categoria', controller.list)
 
-router.get('/excluir/:id', controller.excluir)
+router.get('/excluir/:categoria/:id', controller.excluir)
 
-router.get('/editar/:id', controller.editarForm)
+router.get('/editar/:categoria/:id', controller.editarForm)
 
-router.post('/editar/:id', controller.editar)
+router.post('/editar/:categoria/:id', controller.editar)
 
 module.exports = router

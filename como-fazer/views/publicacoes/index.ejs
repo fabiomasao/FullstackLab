@@ -14,8 +14,8 @@
       <tr>
         <td><%= publicacao.titulo %></th>
         <td>
-            <a href="/categorias/editar/<%= publicacao.id %>">Editar</a>
-            <a href="/categorias/excluir/<%= publicacao.id %>">Excluir</a><br>
+            <a href="/publicacoes/editar/<%= categoria %>/<%= publicacao.id %>">Editar</a>
+            <a href="/publicacoes/excluir/<%= categoria %>/<%= publicacao.id %>">Excluir</a><br>
         </td>
       </tr>
       <% }) %>

@@ -6,38 +6,43 @@ const novaForm = async(req, res) =>{
 }
 
 const nova = async(req, res)=>{
-    await api.create('publicacoes/' + req.body.categoria, {
+    await api.create('publicacoes/'+ req.body.categoria, {
         titulo: req.body.titulo,
         conteudo: req.body.conteudo 
     })
-    res.redirect('/publicacoes')
+    res.redirect('/publicacoes/categoria/'+req.body.categoria)
 }
 
 const list = async(req, res)=>{
-    const publicacoes = await api.list('publicacoes')
-    res.render('publicacoes/index', {publicacoes})
+    const categoria = req.params.categoria
+    const publicacoes = await api.list('publicacoes/'+categoria)
+    res.render('publicacoes/index', {publicacoes, categoria})
 
 }
 
 const excluir = async(req, res) =>{
-    await api.apagar('publicacoes', req.params.id)
-    res.redirect('/publicacoes')
+    await api.apagar('publicacoes/'+req.params.categoria, req.params.id)
+    res.redirect('/publicacoes/categoria/'+req.params.categoria)
 
 }
 
 const editarForm = async(req, res) =>{
-    const categoria = await api.get('categorias', req.params.id)
-    res.render('categorias/editar', {
-        categoria
+    const publicacao = await api.get('publicacoes/'+req.params.categoria, req.params.id)
+    res.render('publicacoes/editar', {
+        publicacao,
+        categoria: req.params.categoria
+
     })        
 }
 
 const editar = async(req, res)=>{
-    await api.update('categorias', req.params.id, {
-        categoria: req.body.categoria 
+    await api.update('publicacoes/'+req.params.categoria, req.params.id, {
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo
+
     })
     
-    res.redirect('/categorias')
+    res.redirect('/publicacoes/categoria/'+req.params.categoria)
 }
 
 module.exports = {
